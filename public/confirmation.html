@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmation</title>
+    <script>
+        window.onload = function() {
+            let countdown = 5; // Starting countdown value
+            const countdownElement = document.getElementById('countdown');
+
+            const interval = setInterval(() => {
+                countdownElement.textContent = countdown; // Update countdown display
+                countdown--; // Decrement countdown
+
+                if (countdown < 0) {
+                    clearInterval(interval); // Stop the interval
+                    window.location.href = '/'; // Redirect to the starting page
+                }
+            }, 1000); // Update every second
+        };
+    </script>
+</head>
+<body>
+    <h1>Confirmation</h1>
+    <p>You're all set! You've finished checking in to our system. Please take a seat and the receptionist will be with you shortly.</p>
+    <p>This page will redirect in <span id="countdown">5</span> seconds...</p>
+</body>
+</html>
