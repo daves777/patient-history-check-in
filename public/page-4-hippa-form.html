@@ -90,26 +90,57 @@
 
         function startDrawing(event) {
             drawing = true;
-            draw(event); // Start drawing immediately
+            ctx.beginPath();
+            const { x, y } = getCoordinates(e);
+            ctx.moveTo(x, y);
         }
 
-        function stopDrawing() {
-            drawing = false;
-            ctx.beginPath(); // Reset path after finishing
-        }
-
-        function draw(event) {
+        function draw(e) {
             if (!drawing) return;
             ctx.lineWidth = 2; // Set the line width
             ctx.lineCap = 'round'; // Round edges of the line
             ctx.strokeStyle = '#000'; // Color of the signature
-
-            ctx.lineTo(event.offsetX, event.offsetY); // Draw line to the cursor position
-            ctx.stroke(); // Render the line
-            ctx.beginPath(); // Start a new path
-            ctx.moveTo(event.offsetX, event.offsetY); // Move to the current mouse position
+            const { x, y } = getCoordinates(e);
+            ctx.lineTo(x, y);
+            ctx.stroke();
         }
 
+        function stopDrawing() {
+            drawing = false;
+        }
+
+        // Utility to get the correct coordinates for both mouse and touch events
+        function getCoordinates(e) {
+            if (e.touches) {
+                return {
+                    x: e.touches[0].clientX - canvas.getBoundingClientRect().left,
+                    y: e.touches[0].clientY - canvas.getBoundingClientRect().top,
+                };
+            } else {
+                return {
+                    x: e.clientX - canvas.getBoundingClientRect().left,
+                    y: e.clientY - canvas.getBoundingClientRect().top,
+                };
+            }
+        }
+
+        // Event listeners for mouse
+        canvas.addEventListener('mousedown', startDrawing);
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('mouseup', stopDrawing);
+        canvas.addEventListener('mouseout', stopDrawing); // to stop drawing when the mouse leaves the canvas
+
+        // Event listeners for touch
+        canvas.addEventListener('touchstart', (e) => {
+            e.preventDefault(); // Prevent scrolling when drawing
+            startDrawing(e);
+        });
+        canvas.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            draw(e);
+        });
+        canvas.addEventListener('touchend', stopDrawing);
+        
         function isCanvasBlank(canvas) {
             return !canvas.getContext('2d')
                 .getImageData(0, 0, canvas.width, canvas.height).data
