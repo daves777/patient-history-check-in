@@ -1,6 +1,4 @@
-/* Existing CSS for the starting page */
-
-/* Reset styles for consistency across browsers */
+/* General Reset */
 * {
     margin: 0;
     padding: 0;
@@ -8,7 +6,7 @@
     font-family: 'Arial', sans-serif;
 }
 
-/* Body styling */
+/* Body Styling */
 body {
     background-color: #f2f2f2;
     height: 100vh;
@@ -17,45 +15,49 @@ body {
     align-items: center;
 }
 
-/* Center container for content */
+.form-panel {
+    width: 100%;
+    /* height: 700px; */
+}
+
+/* Center Container */
 .center-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
 }
 
-/* Card styling */
+/* Card (Starting Page) */
 .card {
     background-color: white;
-    padding: 100px 100px;
+    padding: 100px;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
-/* Header styling */
-.card h1 {
+/* Card Header */
+.card h1, form h1 {
     font-size: 2rem;
     font-weight: bold;
-    margin-bottom: 10px;
     color: #333;
-}
-
-/* Text paragraph */
-.card p {
     margin-bottom: 20px;
-    color: #555;
+    text-align: center;
 }
 
-/* Button group layout */
+/* Card Paragraph */
+.card p {
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* Button Group (Starting Page) */
 .button-group {
     display: flex;
     justify-content: space-around;
-    margin-top: 100px; /* Increase this value to add more space */
+    margin-top: 100px;
 }
 
-/* Button styling */
 .btn {
     border: none;
     padding: 10px 20px;
@@ -64,10 +66,9 @@ body {
     cursor: pointer;
     transition: background-color 0.5s ease;
     color: white;
-    margin: 0 100px; /* Add horizontal margin between buttons */
+    margin: 0 100px;
 }
 
-/* Specific button colors */
 .returning-patient {
     background-color: #4a8d9e;
 }
@@ -76,26 +77,11 @@ body {
     background-color: #1f5eb7;
 }
 
-/* Hover effect for buttons */
 .btn:hover {
     opacity: 0.8;
 }
 
-/* Responsive styling */
-@media (max-width: 600px) {
-    .card {
-        padding: 20px;
-    }
-
-    .btn {
-        font-size: 0.9rem;
-        padding: 8px 15px;
-    }
-}
-
-/* New CSS for page-1-demographics.html */
-
-/* Form container styling */
+/* Form Container (Demographics Page) */
 form {
     max-width: 800px;
     margin: auto;
@@ -105,17 +91,9 @@ form {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Header for the form page */
-h1 {
-    text-align: center;
-    font-size: 2rem;
-    color: #333;
-    margin-bottom: 20px;
-}
-
-/* Label styling */
+/* Form Labels */
 form label {
-    font-size: 0.85rem;
+    font-size: 1rem;
     color: #666;
     font-weight: bold;
     display: block;
@@ -123,13 +101,13 @@ form label {
     margin-bottom: 5px;
 }
 
-/* Input field styling */
+/* Input Fields */
 form input[type="text"],
 form input[type="email"],
 form input[type="tel"],
 form input[type="date"],
 form select {
-    width: calc(100% - 10px);
+    width: 100%;
     padding: 10px;
     font-size: 1rem;
     border: 1px solid #ccc;
@@ -137,20 +115,109 @@ form select {
     margin-bottom: 10px;
 }
 
-/* Styling for rows of inputs */
-form .input-group {
+/* Input Groups for Multiple Fields on a Line */
+.input-group {
     display: flex;
     gap: 15px;
+    width: 100%;
 }
 
-form .input-group input,
-form .input-group select {
+/* Each element within input-group takes equal width */
+.long-input {
+    width: 100%;
+}
+
+.short-input {
+    width: fit-content;
+}
+
+#middleInitial {
+    width: 50px;
+}
+
+#state {
+    width: 70px;
+}
+
+#sex {
+    width: 70px;
+}
+
+#zipCode {
+    width: 100px;
+}
+
+/* Override flex properties for first and last name */
+#firstName, #lastName {
     flex: 1;
 }
 
-/* Button styling */
-form button[type="submit"] {
+.column-div {
+    display: flex;
+    gap: 50px;
+}
+
+.checkbox-column-div {
+    display: flex;
+    justify-content: space-between;
     width: 100%;
+}
+
+.progress-indicator {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.progress-indicator > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.progress-indicator label {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    width: 114px;
+    min-height: 37px;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+/* Stack label above step circle */
+.step {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #ccc;
+    font-size: 0.9rem;
+    color: white;
+    font-weight: bold;
+}
+
+.step.completed {
+    background-color: #f1c40f;
+}
+
+.sign-date {
+    width: 200px !important;
+}
+
+.date-container {
+    display: flex;
+    justify-content: center;
+}
+
+/* Submit Button */
+form button[type="submit"] {
     padding: 12px;
     background-color: #1f5eb7;
     color: white;
@@ -160,27 +227,26 @@ form button[type="submit"] {
     cursor: pointer;
     margin-top: 20px;
     transition: background-color 0.3s ease;
+    margin-left: auto;
+    display: block;
 }
 
 form button[type="submit"]:hover {
     background-color: #174a96;
 }
 
-/* Responsive adjustments for form */
+/* Responsive Styling */
 @media (max-width: 600px) {
-    form .input-group {
-        flex-direction: column;
+    .card {
+        padding: 20px;
     }
-}
 
-/* Responsive styling */
-@media (max-width: 600px) {
+    .btn {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+    }
+
     .input-group {
         flex-direction: column;
     }
-}
-
-/* Address group styling */
-.address-group > div {
-    flex: 1;
 }

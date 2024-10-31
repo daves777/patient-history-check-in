@@ -35,14 +35,40 @@
         I acknowledge that I have been offered the HIPAA Notice of Privacy Practices which informs me of my rights with respect to my protected health information. 
         I agree to pay for services furnished to me including charges not paid in full by my insurance.
     </p>
-
+    <br>
     <h2>Patient or Guardian (If under 18 years old) Signature:</h2>
     <div class="signature-box" id="signatureBox">
         <canvas id="signatureCanvas"></canvas>
     </div>
-    <input type="date" id="date" name="date" required><br><br>
+    <div class="date-container">
+        <input class="sign-date" type="date" id="date" name="date" required><br>
+    </div>
     
-    <button id="submitConsent">Submit</button>
+    <button type="submit" id="submitConsent">Submit</button>
+    <br>
+        <br><hr><br>
+            <div class="progress-indicator">
+                <div>
+                    <label>General Information</label>
+                    <div class="step completed">1</div>
+                </div>
+                <div>
+                    <label>Medical History</label>
+                    <div class="step completed">2</div>
+                </div>
+                <div>
+                    <label>Ocular History</label>
+                    <div class="step completed">3</div>
+                </div>
+                <div>
+                    <label>Consent</label>
+                    <div class="step completed">4</div>
+                </div>
+                <div>
+                    <label>Confirmation</label>
+                    <div class="step">5</div>
+                </div>
+            </div>
 
     <script>
         const canvas = document.getElementById('signatureCanvas');

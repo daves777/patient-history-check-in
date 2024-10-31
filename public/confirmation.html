@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <title>Confirmation</title>
     <script>
         window.onload = function() {
@@ -22,8 +23,41 @@
     </script>
 </head>
 <body>
-    <h1>Confirmation</h1>
-    <p>You're all set! You've finished checking in to our system. Please take a seat and the receptionist will be with you shortly.</p>
-    <p>This page will redirect in <span id="countdown">5</span> seconds...</p>
+    <div class="center-container">
+        <form>
+        <h1>Confirmation</h1>
+        <p>You're all set! You've finished checking in to our system. Please take a seat and the receptionist will be with you shortly.</p>
+        <br>
+        <br>
+        <br>
+        <p>This page will redirect in <span id="countdown">5</span> seconds...</p>
+        <br>
+
+        <br>
+            <br><hr><br>
+                <div class="progress-indicator">
+                    <div>
+                        <label>General Information</label>
+                        <div class="step completed">1</div>
+                    </div>
+                    <div>
+                        <label>Medical History</label>
+                        <div class="step completed">2</div>
+                    </div>
+                    <div>
+                        <label>Ocular History</label>
+                        <div class="step completed">3</div>
+                    </div>
+                    <div>
+                        <label>Consent</label>
+                        <div class="step completed">4</div>
+                    </div>
+                    <div>
+                        <label>Confirmation</label>
+                        <div class="step completed">5</div>
+                    </div>
+                </div>
+        </form>
+    </div>
 </body>
 </html>

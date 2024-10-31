@@ -74,7 +74,7 @@ app.post('/submit', (req, res) => {
       Phone: ${demographics.phone}
       Email: ${demographics.email}
       Date of Birth: ${demographics.dob}
-      Gender: ${demographics.gender}
+      Gender: ${demographics.sex}
 
       Medical History:
       --------------------
