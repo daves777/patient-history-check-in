@@ -74,12 +74,18 @@ app.post('/submit', (req, res) => {
     const content = `
       Patient Information:
       --------------------
-      Name: ${demographics.firstName} ${demographics.middleInitial || ''} ${demographics.lastName}
-      Address: ${demographics.address}, ${demographics.city}, ${demographics.state} ${demographics.zipCode}
+      Full Name: ${demographics.firstName} ${demographics.middleInitial || ''} ${demographics.lastName}
+      First Name: ${demographics.firstName}
+      Middle Initial: ${demographics.middleInitial || ''}
+      Last Name: ${demographics.lastName}
+      Address: ${demographics.address}
+      City: ${demographics.city}
+      State: ${demographics.state}
+      Zip Code: ${demographics.zipCode}
       Phone: ${demographics.phone}
       Email: ${demographics.email}
       Date of Birth: ${demographics.dob}
-      Gender: ${demographics.sex}
+      Sex: ${demographics.sex}
 
       Medical History:
       --------------------
