@@ -2,8 +2,6 @@
 
 This is a web-based optometry check-in application designed to streamline patient information intake by collecting general demographics, medical history, ocular history, and HIPAA consent. The data is gathered across multiple pages with an intuitive, user-friendly interface, allowing patients to fill out forms quickly and easily.
 
----
-
 ## Table of Contents
 
 - [Project Overview](#project-overview)
@@ -15,8 +13,6 @@ This is a web-based optometry check-in application designed to streamline patien
 - [Usage](#usage)
 - [Future Enhancements](#future-enhancements)
 
----
-
 ## Project Overview
 
 This application guides users through a series of forms across multiple pages:
@@ -27,8 +23,6 @@ This application guides users through a series of forms across multiple pages:
 
 The goal is to streamline patient intake for optometrists by enabling patients to pre-fill required information before their appointments, saving time and reducing data entry errors.
 
----
-
 ## Features
 
 - Multi-step form navigation.
@@ -36,8 +30,6 @@ The goal is to streamline patient intake for optometrists by enabling patients t
 - Signature collection and conditional file download.
 - “Exit” and “Next” buttons for navigation control.
 - **User-friendly** interface with clear instructions and form progress indicators.
-
----
 
 ## Prerequisites
 
