@@ -58,6 +58,11 @@ app.get('/session-data', (req, res) => {
     res.json(demographics);
 });
 
+app.get('/patient-data', (req, res) => {
+    const returningPatient = req.session.returningPatient || {};
+    res.json(returningPatient);
+});
+
 // Serve the ocular history page and handle final submission
 app.post('/submit', (req, res) => {
     // Retrieve all the collected data from session
@@ -94,9 +99,6 @@ app.post('/submit', (req, res) => {
       Previous Eye Surgeries: ${ocularHistory.surgeries.join(', ') || 'None'}
     `;
 
-    // Store the file content in the session to retrieve later
-    req.session.patientInfoContent = content;
-
     const infoFilePath = path.join(config.path, `${demographics.lastName} ${demographics.firstName} ${demographics.dob} Info.txt`);
 
     // Write patient information to a text file
@@ -110,7 +112,31 @@ app.post('/submit', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'confirmation.html')); 
 });
 
+app.post('/patient-lookup', (req, res) => {
+    const fs = require('fs');
+    const demographics = req.body
+    const filePath = path.join(config.path, `${demographics.lastName} ${demographics.firstName} ${demographics.dob} Info.txt`);
 
+    fs.access(filePath, fs.constants.F_OK, (err) => {
+    if (err) {
+        console.log('Patient record does not exist');
+        res.sendFile(path.join(__dirname, 'public', 'patient-not-found.html')); 
+    } else {
+        console.log('Patient record found');
+        req.session.returningPatient ={
+            firstName:"David",
+            middleInitial:"",
+            lastName:"Lu",
+        }
+        res.sendFile(path.join(__dirname, 'public', 'page-1-demographics.html')); 
+    }
+    });
+});
+
+app.post('/clear-session', (req, res) => {
+    req.session.returningPatient = null; // Clear the returningPatient data
+    res.sendStatus(200); // Send a success status
+});
 
 // Start the server
 app.listen(PORT, () => {

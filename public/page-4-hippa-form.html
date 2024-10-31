@@ -29,7 +29,7 @@
     </style>
 </head>
 <body>
-  <form action="/submit" method="POST">
+  <form action="/submit" method="POST" id="consentForm">
     <h1>Privacy & Financial Responsibility Consent</h1>
     <p>
         I acknowledge that I have been offered the HIPAA Notice of Privacy Practices which informs me of my rights with respect to my protected health information. 
@@ -44,7 +44,10 @@
         <input class="sign-date" type="date" id="date" name="date" required><br>
     </div>
     
-    <button type="submit" id="submitConsent">Submit</button>
+    <div class="button-container">
+        <button type="button" class="exit-button" onclick="window.location.href='index.html'">Exit</button>
+        <button type="submit" id="submitConsent">Submit</button>
+    </div>
     <br>
         <br><hr><br>
             <div class="progress-indicator">
@@ -107,22 +110,37 @@
             ctx.moveTo(event.offsetX, event.offsetY); // Move to the current mouse position
         }
 
-        date = document.getElementById('date')
+        function isCanvasBlank(canvas) {
+            return !canvas.getContext('2d')
+                .getImageData(0, 0, canvas.width, canvas.height).data
+                .some(channel => channel !== 0);
+        }
 
         document.getElementById('submitConsent').addEventListener('click', function() {
-            const signature = document.getElementById('signatureCanvas').toDataURL(); // Get the signature as a Data URL
-            if (signature) {
-              fetch('/session-data')
-                .then(response => response.json())
-                .then(data => {
-                    const link = document.createElement('a');
-                    link.href = canvas.toDataURL('image/png'); // Convert canvas to data URL
-                    link.download = `${data.lastName} ${data.firstName} ${data.dob} Signature.png`; // Set download filename
-                    link.click(); // Trigger download
-                })
-            } else {
-                alert('Please provide a signature before submitting.');
+            event.preventDefault(); // Prevent form submission
+
+            const date = document.getElementById("date").value;
+            const signatureBlank = isCanvasBlank(document.getElementById("signatureCanvas"));
+
+            if (signatureBlank || !date) {
+                document.getElementById("date").setCustomValidity("Please complete both signature and date fields before submitting")
+                document.getElementById("date").reportValidity();
+                return;
             }
+            document.getElementById("date").setCustomValidity("")
+
+            const signature = document.getElementById('signatureCanvas').toDataURL(); // Get the signature as a Data URL
+            fetch('/session-data')
+            .then(response => response.json())
+            .then(data => {
+                const link = document.createElement('a');
+                link.href = canvas.toDataURL('image/png'); // Convert canvas to data URL
+                link.download = `${data.lastName} ${data.firstName} ${data.dob} Signature.png`; // Set download filename
+                link.click(); // Trigger download
+
+                // Submit the form after download completes
+                document.getElementById('consentForm').submit();
+            })
         });
 
 

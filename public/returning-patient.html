@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demographics Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="center-container">
+        <form class="form-panel" action="/patient-lookup" method="POST">
+            <h1>Returning Patient</h1> <br>
+            <input type="text" id="firstName" name="firstName" placeholder="First Name" required>
+            <input type="text" id="lastName" name="lastName" placeholder="Last Name" required>
+            <label for="dob">Date of Birth</label>
+            <input type="date" id="dob" name="dob" required>
+            <div class="button-container">
+                <button type="button" class="exit-button" onclick="window.location.href='index.html'">Exit</button>
+                <button type="submit">Next</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

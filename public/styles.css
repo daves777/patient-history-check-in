@@ -69,6 +69,18 @@ body {
     margin: 0 100px;
 }
 
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px; /* Adjust as needed */
+  }
+  
+.button-container button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
 .returning-patient {
     background-color: #4a8d9e;
 }
@@ -228,6 +240,20 @@ form button[type="submit"] {
     margin-top: 20px;
     transition: background-color 0.3s ease;
     margin-left: auto;
+    display: block;
+}
+
+/* Submit Button */
+.exit-button {
+    padding: 12px;
+    background-color: #b71f1f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
     display: block;
 }
 

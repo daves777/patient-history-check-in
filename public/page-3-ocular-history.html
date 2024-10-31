@@ -11,14 +11,14 @@
       <h1>Ocular History</h1>
       <div class="column-div">
         <div>
-          <label for="lastExam">When was your last eye exam?</label><br>
-          <input type="text" id="lastExam" name="lastExam"><br>
+          <label for="lastExam">Year of last eye exam:</label>
+          <input type="text" id="lastExam" name="lastExam" maxlength="4"><br>
 
           <div>
             <label>I wear:</label>
-            <input type="checkbox" name="wear" value="Glasses"> Glasses
-            <input type="checkbox" name="wear" value="Contacts"> Contacts
-            <input type="checkbox" name="wear" value="None"> None
+            <input type="checkbox" name="wear[]" value="Glasses"> Glasses
+            <input type="checkbox" name="wear[]" value="Contacts"> Contacts
+            <input type="checkbox" name="wear[]" value="None"> None
           </div>
 
           <div>
@@ -44,38 +44,40 @@
           <label>Have you been diagnosed with the following? (Ocular)</label><br>
           <div class="checkbox-column-div">
             <div>
-              <input type="checkbox" name="ocularConditions" value="Glaucoma"> Glaucoma<br>
-              <input type="checkbox" name="ocularConditions" value="Macular Degeneration"> Macular Degeneration<br>
-              <input type="checkbox" name="ocularConditions" value="Lazy Eye (Amblyopia)"> Lazy Eye (Amblyopia)<br>
-              <input type="checkbox" name="ocularConditions" value="Diabetic Retinopathy"> Diabetic Retinopathy<br>
-              <input type="checkbox" name="ocularConditions" value="Retinal/Optic Nerve Disease"> Retinal/Optic Nerve Disease<br>
+              <input type="checkbox" name="ocularConditions[]" value="Glaucoma"> Glaucoma<br>
+              <input type="checkbox" name="ocularConditions[]" value="Macular Degeneration"> Macular Degeneration<br>
+              <input type="checkbox" name="ocularConditions[]" value="Lazy Eye (Amblyopia)"> Lazy Eye (Amblyopia)<br>
+              <input type="checkbox" name="ocularConditions[]" value="Diabetic Retinopathy"> Diabetic Retinopathy<br>
+              <input type="checkbox" name="ocularConditions[]" value="Retinal/Optic Nerve Disease"> Retinal/Optic Nerve Disease<br>
             </div>
             <div>
-              <input type="checkbox" name="ocularConditions" value="Keratoconus"> Keratoconus<br>
-              <input type="checkbox" name="ocularConditions" value="Dry Eyes"> Dry Eyes<br>
-              <input type="checkbox" name="ocularConditions" value="Iritis/Uveitis"> Iritis/Uveitis<br>
-              <input type="checkbox" name="ocularConditions" value="Eye Turn (Strabismus)"> Eye Turn (Strabismus)<br>
-              <input type="checkbox" name="ocularConditions" value="None"> None<br><br>
+              <input type="checkbox" name="ocularConditions[]" value="Keratoconus"> Keratoconus<br>
+              <input type="checkbox" name="ocularConditions[]" value="Dry Eyes"> Dry Eyes<br>
+              <input type="checkbox" name="ocularConditions[]" value="Iritis/Uveitis"> Iritis/Uveitis<br>
+              <input type="checkbox" name="ocularConditions[]" value="Eye Turn (Strabismus)"> Eye Turn (Strabismus)<br>
+              <input type="checkbox" name="ocularConditions[]" value="None"> None<br><br>
             </div>
           </div>
           <label>Have you had previous eye surgery for the following?</label><br>
           <div class="checkbox-column-div">
             <div>
-              <input type="checkbox" name="surgeries" value="Blindness/Vision Loss"> Blindness/Vision Loss<br>
-              <input type="checkbox" name="surgeries" value="Cataracts"> Cataracts<br>
-              <input type="checkbox" name="surgeries" value="Diabetes"> Diabetes<br>
-              <input type="checkbox" name="surgeries" value="Glaucoma"> Glaucoma<br>
+              <input type="checkbox" name="surgeries[]" value="Blindness/Vision Loss"> Blindness/Vision Loss<br>
+              <input type="checkbox" name="surgeries[]" value="Cataracts"> Cataracts<br>
+              <input type="checkbox" name="surgeries[]" value="Diabetes"> Diabetes<br>
+              <input type="checkbox" name="surgeries[]" value="Glaucoma"> Glaucoma<br>
             </div>
             <div>
-              <input type="checkbox" name="surgeries" value="Keratoconus"> Keratoconus<br>
-              <input type="checkbox" name="surgeries" value="Macular Degeneration"> Macular Degeneration<br>
-              <input type="checkbox" name="surgeries" value="None"> None<br><br>
+              <input type="checkbox" name="surgeries[]" value="Keratoconus"> Keratoconus<br>
+              <input type="checkbox" name="surgeries[]" value="Macular Degeneration"> Macular Degeneration<br>
+              <input type="checkbox" name="surgeries[]" value="None"> None<br><br>
             </div>
           </div>
         </div>
       </div>
-
-      <button type="submit">Next</button>
+      <div class="button-container">
+          <button type="button" class="exit-button" onclick="window.location.href='index.html'">Exit</button>
+          <button type="submit">Next</button>
+      </div>
       <br>
         <br><hr><br>
             <div class="progress-indicator">

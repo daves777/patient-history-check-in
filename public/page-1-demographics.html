@@ -6,6 +6,18 @@
     <title>Demographics Form</title>
     <link rel="stylesheet" href="styles.css">
     <script>
+
+        fetch('/patient-data')
+        .then(response => response.json())
+        .then(returningPatient => {
+            console.log(returningPatient)
+            if (returningPatient.firstName) {
+                document.getElementById("firstName").value = returningPatient.firstName
+                document.getElementById("middleInitial").value = returningPatient.middleInitial
+                document.getElementById("lastName").value = returningPatient.lastName
+            }
+        })
+
         // Function to validate numeric input
         function validateNumericInput(event) {
             const input = event.target;
@@ -15,11 +27,22 @@
                 input.value = numericValue; // Update input with only numeric characters
             }
         }
+
+        // Function to validate email format
+        function validateEmail() {
+            const email = document.getElementById("email").value;
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
+            return true;
+        }
     </script>
 </head>
 <body>
     <div class="center-container">
-        <form class="form-panel" action="/page-2-medical-history.html" method="POST">
+        <form class="form-panel" action="/page-2-medical-history.html" method="POST" onsubmit="return validateEmail()">
             <h1>General Information</h1> <br>
             <!-- Name Group -->
             <label>Full Name</label>
@@ -125,7 +148,10 @@
                     <input type="text" id="zipCode" name="zipCode" placeholder="Zip Code" required maxlength="5" minlength="5" oninput="validateNumericInput(event)">
                 </div>
             </div>
-            <button type="submit">Next</button>
+            <div class="button-container">
+                <button type="button" class="exit-button" onclick="window.location.href='index.html'">Exit</button>
+                <button type="submit">Next</button>
+            </div>
             <br>
             <br><hr><br>
                 <div class="progress-indicator">

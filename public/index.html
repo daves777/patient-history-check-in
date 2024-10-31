@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Patient Check-in</title>
     <link rel="stylesheet" href="styles.css">
+    <script>
+        function clearSessionDetails(){
+            fetch('/clear-session', {
+                method: 'POST'
+            })
+            .then(() => {
+                window.location.href = 'page-1-demographics.html'; // Redirect to demographics page
+            })
+            .catch(error => console.error('Error clearing session:', error));
+        }
+    </script>
 </head>
 <body>
     <div class="center-container">
@@ -12,8 +23,8 @@
             <h1>Welcome</h1>
             <p>Please check-in as a new or returning patient</p>
             <div class="button-group">
-                <button class="btn returning-patient">Returning Patient</button>
-                <button class="btn new-patient" onclick="window.location.href='page-1-demographics.html'">New Patient</button>
+                <button class="btn returning-patient" onclick="window.location.href='returning-patient.html'">Returning Patient</button>
+                <button class="btn new-patient" onclick="clearSessionDetails();window.location.href='page-1-demographics.html';">New Patient</button>
             </div>
         </div>
     </div>
