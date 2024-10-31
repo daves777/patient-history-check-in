@@ -51,7 +51,7 @@ npm -v
 Clone this repository to your local machine using the following command:
 
 ```bash
-git clone [<repository-url>](https://github.com/daves777/patient-history-check-in.git)
+git clone https://github.com/daves777/patient-history-check-in.git
 ```
 
 2. **Navigate to the Project Directory**
