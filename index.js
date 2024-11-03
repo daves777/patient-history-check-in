@@ -91,7 +91,7 @@ app.post('/submit', (req, res) => {
       --------------------
       Allergies: ${medicalHistory.allergies || 'None'}
       Medications: ${medicalHistory.medications || 'None'}
-      Diagnosed Conditions: ${medicalHistory.conditions ? medicalHistory.conditions.join(', ') : 'None'}
+      Diagnosed Conditions: ${Array.isArray(medicalHistory.conditions) ? medicalHistory.conditions.join(', ') : 'None'}
       Family History: ${medicalHistory.familyHistory || 'None'}
 
       Ocular History:
